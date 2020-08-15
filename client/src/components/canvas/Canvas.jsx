@@ -12,9 +12,11 @@ const Canvas = () => {
     }, [])
 
     function mouseDownHandler(e) {
-        console.log(e.pageX)
+        console.log(e.offsetX)
         console.log(e.pageY)
-        ctx.fillRect(e.pageX-50,e.pageY-50,50,50)
+        // ctx.fillRect(e.pageX-50,e.pageY-50,50,50)
+        ctx.fontSize = '50px'
+        ctx.fillText('afsasf', e.pageX, e.pageY, 200)
     }
 
     function mouseUpHandler(e) {
