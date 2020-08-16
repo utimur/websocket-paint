@@ -1,10 +1,12 @@
-import figureReducer from "./figureReducer";
+import toolReducer from "./toolReducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
+import canvasReducer from "./canvasReducer";
 
 const rootReducer = combineReducers({
-    figures: figureReducer,
+    tool: toolReducer,
+    canvas: canvasReducer,
 })
 
 

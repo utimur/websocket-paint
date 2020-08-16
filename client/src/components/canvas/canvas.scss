@@ -1,5 +1,22 @@
 .canvas {
   //width: 100%;
   //height: calc(100vh - 50px);
-  background-color: #f6f6f6;
+  //background-color: #f6f6f6;
+}
+
+.Brush {
+  cursor: url("../../assets/brush.png") 0 20, auto;
+}
+
+.Eraser {
+  cursor: url("../../assets/eraser.png") 0 17, auto;
+}
+
+
+.Text {
+  cursor: url("../../assets/text.png") 10 10, auto;
+}
+
+.Pencil {
+  cursor: url("../../assets/pencil.png") 0 20, auto;
 }

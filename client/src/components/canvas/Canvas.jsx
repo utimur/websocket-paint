@@ -1,40 +1,38 @@
 import React, {useEffect, useRef} from 'react';
 import './canvas.scss'
+import Brush from "../../tools/Brush";
+import {useDispatch, useSelector} from "react-redux";
+import {setCanvas} from "../../reducers/canvasReducer";
 
 const Canvas = () => {
     const canvasRef = useRef()
+    const dispatch = useDispatch()
+    const color = useSelector(state => state.tool.color)
+    const undoList = useSelector(state => state.tool.undoList)
+    const redoList = useSelector(state => state.tool.redoList)
     let canvas;
     let ctx;
+    const tool = useSelector(state => state.tool.tool);
 
-    useEffect(()=> {
-        canvas = canvasRef.current
-        ctx = canvas.getContext('2d')
+
+
+    useEffect(() => {
+        dispatch(setCanvas(canvasRef.current))
     }, [])
 
-    function mouseDownHandler(e) {
-        console.log(e.offsetX)
-        console.log(e.pageY)
-        // ctx.fillRect(e.pageX-50,e.pageY-50,50,50)
-        ctx.fontSize = '50px'
-        ctx.fillText('afsasf', e.pageX, e.pageY, 200)
-    }
+    useEffect(() => {
+        if (tool) {
+            tool.color = color;
+            tool.dispatch = dispatch
+        }
+    }, [tool, color])
 
-    function mouseUpHandler(e) {
-
-    }
-
-    function mouseMoveHandler(e) {
-
-    }
 
     return (
         <canvas
             ref={canvasRef}
             width={(document.body.getBoundingClientRect().width - 50)}
-            height={(document.body.getBoundingClientRect().height - 50)} className='canvas'
-            onMouseDown={(e) => mouseDownHandler(e)}
-            onMouseUp={(e) => mouseUpHandler(e)}
-            onMouseMove={(e) => mouseMoveHandler(e)}
+            height={(document.body.getBoundingClientRect().height - 70)} className={`canvas ${tool.name}`}
         />
     );
 };

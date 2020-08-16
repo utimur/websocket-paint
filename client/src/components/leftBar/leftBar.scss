@@ -1,15 +1,56 @@
+@import "../../utils/variables";
 
 
 .leftbar {
   width: 50px;
-  height: calc(100vh - 50px);
-  background-color: lightgray;
-  top: 50px;
-  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 70px);
+  top: $topbar-height;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  &__btns {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    background-size: cover;
+    border: none;
+  }
+
+
+  &__cursor {
+    background: url("../../assets/cursor.svg") no-repeat center center;
+    margin: 15px 25% 0 25%;
+  }
+  &__brush {
+    background: url("../../assets/brush.svg") no-repeat center center;
+  }
+  &__pencil {
+    background: url("../../assets/pencil.svg") no-repeat center center;
+  }
+  &__text {
+    background: url("../../assets/text.svg") no-repeat center center;
+  }
+  &__eraser {
+    background: url("../../assets/eraser.svg") no-repeat center center;
+  }
+  &__line {
+    background: url("../../assets/line.svg") no-repeat center center;
+  }
+  &__square {
+    background: url("../../assets/square.svg") no-repeat center center;
+  }
+  &__circle {
+    background: url("../../assets/circle.svg") no-repeat center center;
+  }
 
   &__color-input {
     margin-top: 20px;
