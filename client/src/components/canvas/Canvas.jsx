@@ -1,17 +1,15 @@
 import React, {useEffect, useRef} from 'react';
 import './canvas.scss'
-import Brush from "../../tools/Brush";
 import {useDispatch, useSelector} from "react-redux";
 import {setCanvas} from "../../reducers/canvasReducer";
 
 const Canvas = () => {
     const canvasRef = useRef()
     const dispatch = useDispatch()
-    const color = useSelector(state => state.tool.color)
-    const undoList = useSelector(state => state.tool.undoList)
-    const redoList = useSelector(state => state.tool.redoList)
-    let canvas;
-    let ctx;
+    const fillColor = useSelector(state => state.tool.fillColor)
+    const strokeColor = useSelector(state => state.tool.strokeColor)
+    const lineWidth = useSelector(state => state.tool.lineWidth)
+    const lineCap = useSelector(state => state.tool.lineCap)
     const tool = useSelector(state => state.tool.tool);
 
 
@@ -22,10 +20,13 @@ const Canvas = () => {
 
     useEffect(() => {
         if (tool) {
-            tool.color = color;
+            tool.fillColor = fillColor;
+            tool.strokeColor = strokeColor;
+            tool.lineWidth = lineWidth;
+            tool.lineCap = lineCap
             tool.dispatch = dispatch
         }
-    }, [tool, color])
+    }, [tool, fillColor, strokeColor, lineWidth, lineCap])
 
 
     return (

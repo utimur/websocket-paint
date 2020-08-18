@@ -7,9 +7,18 @@ class Tool {
 
     draw(){};
 
-    set color(color) {
-        this.ctx.strokeStyle = color
-        this.ctx.fillStyle = color
+    set fillColor(fillColor) {
+        this.ctx.fillStyle = fillColor
+    }
+
+    set strokeColor(strokeColor) {
+        this.ctx.strokeStyle = strokeColor
+    }
+    set lineWidth(lineWidth) {
+        this.ctx.lineWidth = lineWidth
+    }
+    set lineCap(lineCap) {
+        this.ctx.lineCap = lineCap
     }
 
 

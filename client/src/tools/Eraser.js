@@ -4,7 +4,6 @@ export default class Eraser extends Brush{
     constructor(canvas) {
         super(canvas);
         this.name = 'Eraser'
-        this.ctx.strokeStyle = 'white'
     }
 
 

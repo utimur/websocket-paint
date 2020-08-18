@@ -6,9 +6,7 @@ export default class Brush extends Tool{
         super(canvas);
         this.name = 'Brush'
         this.listen()
-        console.log('brush')
         this.ctx.lineCap = 'round'
-        this.ctx.lineWidth = 5
     }
 
     listen() {

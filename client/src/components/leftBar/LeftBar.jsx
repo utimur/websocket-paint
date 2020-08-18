@@ -1,7 +1,7 @@
 import React from 'react';
 import './leftBar.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {setColor, setTool} from "../../reducers/toolReducer";
+import {setColor, setFillColor, setStrokeColor, setTool} from "../../reducers/toolReducer";
 import Brush from "../../tools/Brush";
 import Cursor from "../../tools/Cursor";
 import Line from "../../tools/Line";
@@ -14,7 +14,12 @@ import Circle from "../../tools/Circle";
 const LeftBar = () => {
     const dispatch = useDispatch()
     const canvas = useSelector(state => state.canvas.canvas)
-    const color = useSelector(state => state.tool.color)
+
+    function setColorHandler(e){
+        e.preventDefault()
+        dispatch(setFillColor(e.target.value))
+        dispatch(setStrokeColor(e.target.value))
+    }
 
     return (
         <div className="leftbar">
@@ -28,7 +33,7 @@ const LeftBar = () => {
                 <button className="leftbar__square leftbar__btn" onClick={() => dispatch(setTool(new Square(canvas)))}/>
                 <button className="leftbar__circle leftbar__btn" onClick={() => dispatch(setTool(new Circle(canvas)))}/>
             </div>
-            <input type="color" className="leftbar__color-input" onInput={(e) =>dispatch(setColor(e.target.value))}/>
+            <input type="color" className="leftbar__color-input" onInput={(e) => setColorHandler(e)}/>
         </div>
     );
 };

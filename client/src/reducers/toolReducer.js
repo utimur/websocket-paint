@@ -1,6 +1,9 @@
 import Cursor from "../tools/Cursor";
 
-const SET_COLOR = 'SET_COLOR'
+const SET_FILL_COLOR = 'SET_FILL_COLOR'
+const SET_STROKE_COLOR = 'SET_STROKE_COLOR'
+const SET_LINE_WIDTH = 'SET_LINE_WIDTH'
+const SET_LINE_CAP = 'SET_LINE_CAP'
 const SET_TOOL = 'SET_TOOL'
 const PUSH_TO_UNDO = 'PUSH_TO_UNDO'
 const PUSH_TO_REDO = 'PUSH_TO_REDO'
@@ -10,15 +13,24 @@ const POP_FROM_REDO = 'POP_FROM_REDO'
 const defaultState = {
     undoList: [],
     redoList: [],
-    color: '#000000',
+    fillColor: '#000000',
+    strokeColor: '#000000',
+    lineWidth: 1,
+    lineCap: 'round',
     tool: new Cursor(),
 }
 
 
 export default function toolReducer(state = defaultState, action) {
     switch (action.type) {
-        case SET_COLOR:
-            return {...state, color: action.payload}
+        case SET_FILL_COLOR:
+            return {...state, fillColor: action.payload}
+        case SET_STROKE_COLOR:
+            return {...state, strokeColor: action.payload}
+        case SET_LINE_WIDTH:
+            return {...state, lineWidth: action.payload}
+        case SET_LINE_CAP:
+            return {...state, lineCap: action.payload}
         case SET_TOOL:
             return {...state, tool: action.payload}
         case PUSH_TO_UNDO:
@@ -42,7 +54,10 @@ export default function toolReducer(state = defaultState, action) {
     }
 };
 
-export const setColor = (color) => ({type: SET_COLOR, payload: color})
+export const setFillColor = (color) => ({type: SET_FILL_COLOR, payload: color})
+export const setStrokeColor = (color) => ({type: SET_STROKE_COLOR, payload: color})
+export const setLineWidth = (width) => ({type: SET_LINE_WIDTH, payload: width})
+export const setLineCap = (cap) => ({type: SET_LINE_CAP, payload: cap})
 export const setTool = (tool) => ({type: SET_TOOL, payload: tool})
 export const pushToUndo = (data) => ({type: PUSH_TO_UNDO, payload: data})
 export const pushToRedo = (data) => ({type: PUSH_TO_REDO, payload: data})

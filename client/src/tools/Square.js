@@ -31,6 +31,8 @@ export default class Square extends Tool{
 
 
     draw(x,y,w,h) {
-        this.ctx.fillRect(x, y, w,h)
+        this.ctx.rect(x, y, w,h)
+        this.ctx.fill()
+        this.ctx.stroke()
     }
 }

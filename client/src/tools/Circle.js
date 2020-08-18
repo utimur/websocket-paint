@@ -33,6 +33,7 @@ export default class Circle extends Tool{
 
     draw(x,y,r) {
         this.ctx.arc(x, y, r, 0, 2*Math.PI)
+        this.ctx.fill()
         this.ctx.stroke()
     }
 }

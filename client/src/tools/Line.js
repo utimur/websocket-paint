@@ -6,7 +6,6 @@ export default class Line extends Tool{
         super(canvas);
         this.listen()
         this.name = 'Line'
-        this.ctx.lineWidth = 5
     }
 
     listen() {
