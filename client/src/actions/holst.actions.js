@@ -35,6 +35,7 @@ export async function saveHolst(id, img) {
             fd.append('id', id)
             fd.append('img', img)
             await axios.post(`${API_URL}/api/holst/save`, fd,{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+            alert("File was saved")
         } catch (e) {
             console.log(e)
             alert(e?.response?.data?.message)

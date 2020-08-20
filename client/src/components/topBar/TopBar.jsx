@@ -38,6 +38,11 @@ const TopBar = () => {
     }
 
 
+    function logOutClickHandler() {
+        dispatch(logOut())
+        localStorage.removeItem('token')
+    }
+
     return (
         <div className="topbar">
             <div className="topbar__main">
@@ -51,10 +56,11 @@ const TopBar = () => {
                 </Route>
                 {!isAuth && <button className="topbar__auth topbar__right" onClick={()=>dispatch(setIsLogin(true))}>Войти</button>}
                 {!isAuth && <button className="topbar__auth" onClick={()=>dispatch(setIsLogin(false))}>Регистрация</button>}
-                {isAuth && <button className="topbar__auth topbar__right" onClick={()=>dispatch(logOut())}>Выход</button>}
+                {isAuth && <button className="topbar__auth topbar__right" onClick={()=> logOutClickHandler()}>Выход</button>}
             </div>
-            <ToolsPanel/>
-
+            <Route path="/canvas">
+                <ToolsPanel/>
+            </Route>
         </div>
     );
 };
