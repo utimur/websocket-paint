@@ -12,6 +12,7 @@ function App() {
           <LeftBar/>
           <Canvas/>
       </div>
+
     </div>
   );
 }

@@ -35,5 +35,6 @@ export default class Brush extends Tool{
     draw(x,y) {
         this.ctx.lineTo(x, y)
         this.ctx.stroke()
+        console.log('draw')
     }
 }
