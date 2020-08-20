@@ -1,14 +1,20 @@
 import React, {useEffect} from 'react';
+import {Route, useHistory} from 'react-router-dom'
 import './topBar.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {popFromRedo, popFromUndo, pushToRedo, pushToUndo} from "../../reducers/toolReducer";
 import ToolsPanel from "./toolsPanel/ToolsPanel";
+import {logOut, setIsLogin} from "../../reducers/userReducer";
+import {saveHolst} from "../../actions/holst.actions";
 
 const TopBar = () => {
     const canvas = useSelector(state => state.canvas.canvas)
     const undoList = useSelector(state => state.tool.undoList)
     const redoList = useSelector(state => state.tool.redoList)
+    const currentHolst = useSelector(state => state.canvas.currentHolst)
+    const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     function reStateCanvas(arr, popFunc, pushFunc) {
         if (arr.length > 0) {
@@ -25,17 +31,30 @@ const TopBar = () => {
         }
     }
 
+    function saveClickHandler() {
+        canvas.toBlob((blob)=> {
+            saveHolst(currentHolst._id, blob)
+        })
+    }
 
 
     return (
         <div className="topbar">
             <div className="topbar__main">
-                <button className="topbar__file">File</button>
-                <button className="topbar__save topbar__btn"/>
-                <button className="topbar__undo topbar__btn" onClick={() => reStateCanvas(undoList, popFromUndo, pushToRedo)}/>
-                <button className="topbar__redo topbar__btn" onClick={() => reStateCanvas(redoList, popFromRedo, pushToUndo)}/>
+                <Route path="/canvas">
+                    <div>
+                        <button className="topbar__file">File</button>
+                        <button className="topbar__save topbar__btn" onClick={() => saveClickHandler()}/>
+                        <button className="topbar__undo topbar__btn" onClick={() => reStateCanvas(undoList, popFromUndo, pushToRedo)}/>
+                        <button className="topbar__redo topbar__btn" onClick={() => reStateCanvas(redoList, popFromRedo, pushToUndo)}/>
+                    </div>
+                </Route>
+                {!isAuth && <button className="topbar__auth topbar__right" onClick={()=>dispatch(setIsLogin(true))}>Войти</button>}
+                {!isAuth && <button className="topbar__auth" onClick={()=>dispatch(setIsLogin(false))}>Регистрация</button>}
+                {isAuth && <button className="topbar__auth topbar__right" onClick={()=>dispatch(logOut())}>Выход</button>}
             </div>
             <ToolsPanel/>
+
         </div>
     );
 };

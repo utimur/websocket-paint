@@ -39,4 +39,17 @@
   &__redo {
     background: url("../../assets/redo.svg") no-repeat center center;
   }
+
+  &__right {
+    margin-left: auto;
+  }
+
+  &__auth {
+    padding: 5px 10px;
+    border: none;
+    font-size: 1.1rem;
+    background: transparent;
+    margin-right: 15px;
+    cursor: pointer;
+  }
 }

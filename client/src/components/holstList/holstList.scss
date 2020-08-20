@@ -1,0 +1,40 @@
+
+
+.holst-list {
+  padding: 10px;
+  display: flex;
+  &__create-btn {
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    background: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    border: none;
+    font-size: 100px;
+    &:hover {
+      box-shadow: 1px 1px 15px rgba(0,0,0,.3);
+    }
+  }
+}
+
+
+.holst {
+  box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+
+  &__image {
+    width: 150px;
+    height: 150px;
+    border: none;
+  }
+  &:hover {
+    box-shadow: 1px 1px 15px rgba(0,0,0,.3);
+  }
+}
