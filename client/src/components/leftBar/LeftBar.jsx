@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './leftBar.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setColor, setFillColor, setStrokeColor, setTool} from "../../reducers/toolReducer";
@@ -19,6 +19,10 @@ const LeftBar = () => {
         e.preventDefault()
         dispatch(setFillColor(e.target.value))
         dispatch(setStrokeColor(e.target.value))
+    }
+
+    function deletePOTOM(e) {
+        console.log('DELETE')
     }
 
     return (

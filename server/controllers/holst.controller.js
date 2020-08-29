@@ -5,7 +5,6 @@ const config = require('config')
 class HolstController {
     async createHolst(req, res) {
         try {
-            console.log(req.body)
             const {title} = req.body
             const holstFromDb = await Holst.findOne({title, owner: req.user.id})
             if (holstFromDb) {
@@ -50,14 +49,13 @@ class HolstController {
         try {
             const img = req.files.img
             const {id} = req.body
-            console.log(req.body)
-            console.log(id)
             const holst = await Holst.findOne({_id:id})
             if (!holst) {
                 return res.status(400).json(`Holst not found`)
             }
             img.mv(`holsts\\${id}.jpg`)
             holst.img = holst.id + '.jpg'
+            holst.updated = Date.now()
             await holst.save()
             return res.json(holst)
         } catch (e) {

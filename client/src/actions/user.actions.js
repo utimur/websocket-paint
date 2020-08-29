@@ -29,7 +29,7 @@ export function getUser() {
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
-            alert(e?.response?.data?.message)
+            // alert(e?.response?.data?.message)
         }
     }
 }

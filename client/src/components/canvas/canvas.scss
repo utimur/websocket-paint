@@ -2,21 +2,17 @@
   //width: 100%;
   //height: calc(100vh - 50px);
   //background-color: #f6f6f6;
+  cursor: none;
+}
+.pointer {
+  cursor: default;
 }
 
-.Brush {
-  cursor: url("../../assets/brush.png") 0 20, auto;
-}
-
-.Eraser {
-  cursor: url("../../assets/eraser.png") 0 17, auto;
-}
-
-
-.Text {
-  cursor: url("../../assets/text.png") 10 10, auto;
-}
-
-.Pencil {
-  cursor: url("../../assets/pencil.png") 0 20, auto;
+.cursor {
+  border-radius: 50%;
+  background-color: rgba(0,0,0, .5);
+  min-width: 5px;
+  min-height: 5px;
+  position: absolute;
+  pointer-events: none;
 }

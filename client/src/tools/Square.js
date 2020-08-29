@@ -29,13 +29,14 @@ export default class Square extends Tool{
 
     mouseMoveHandler(e) {
         if (this.mouseDown) {
-            let curentX =  e.pageX-e.target.offsetLeft;
-            let curentY =  e.pageY-e.target.offsetTop
-            let width = curentX-this.startX
-            let height = curentY-this.startY
+            let curentX = e.pageX - e.target.offsetLeft;
+            let curentY = e.pageY - e.target.offsetTop
+            let width = curentX - this.startX
+            let height = curentY - this.startY
             this.draw(this.startX, this.startY, width, height)
         }
     }
+
 
     draw(x,y,w,h) {
         const img = new Image()

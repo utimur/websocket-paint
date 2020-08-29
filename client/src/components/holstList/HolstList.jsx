@@ -3,6 +3,8 @@ import './holstList.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {getHolstList} from "../../actions/holst.actions";
 import Holst from "./Holst";
+import CreatePopup from "../createPopup/CreatePopup";
+import {showPopup} from "../../reducers/appReducer";
 
 const HolstList = () => {
     const dispatch = useDispatch()
@@ -15,7 +17,8 @@ const HolstList = () => {
     return (
         <div className="holst-list">
             {holstList}
-            <button className="holst-list__create-btn">+</button>
+            <button className="holst-list__create-btn" onClick={() => dispatch(showPopup())}>+</button>
+            <CreatePopup/>
         </div>
     );
 };

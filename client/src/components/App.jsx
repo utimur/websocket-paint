@@ -30,6 +30,7 @@ function App() {
                     </Switch>
                     :
                     <Switch>
+                        <Route path="/canvas/:id" component={Canvas}/>
                         <Route path="/auth" component={Auth}/>
                         <Redirect to="/auth"/>
                     </Switch>

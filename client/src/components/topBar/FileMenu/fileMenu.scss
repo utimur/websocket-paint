@@ -1,0 +1,21 @@
+
+
+.file-menu {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  background: rgba(0,0,0,0.85);
+  padding: 20px;
+  border-radius: 8px;
+  &__item {
+    margin: 5px 0;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.file-menu_open {
+  display: flex;
+}

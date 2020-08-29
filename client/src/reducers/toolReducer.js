@@ -9,6 +9,7 @@ const PUSH_TO_UNDO = 'PUSH_TO_UNDO'
 const PUSH_TO_REDO = 'PUSH_TO_REDO'
 const POP_FROM_UNDO = 'POP_FROM_UNDO'
 const POP_FROM_REDO = 'POP_FROM_REDO'
+const CLEAR_TOOLS = 'CLEAR_TOOLS'
 
 const defaultState = {
     undoList: [],
@@ -49,6 +50,8 @@ export default function toolReducer(state = defaultState, action) {
             return {...state, undoList: [...state.undoList.slice(0, state.undoList.length - 1)]}
         case POP_FROM_REDO:
             return {...state, redoList: [...state.redoList.slice(0, state.redoList.length - 1)]}
+        case CLEAR_TOOLS:
+            return {...state, redoList: [], undoList: [], tool: new Cursor()}
         default:
             return state
     }
@@ -63,3 +66,4 @@ export const pushToUndo = (data) => ({type: PUSH_TO_UNDO, payload: data})
 export const pushToRedo = (data) => ({type: PUSH_TO_REDO, payload: data})
 export const popFromUndo = (data) => ({type: POP_FROM_UNDO})
 export const popFromRedo = (data) => ({type: POP_FROM_REDO})
+export const clearTools = () => ({type: CLEAR_TOOLS})

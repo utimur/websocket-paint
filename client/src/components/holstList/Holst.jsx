@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom'
 
 const Holst = ({holst}) => {
     const history = useHistory()
-    console.log(holst.img)
     return (
         <div className="holst" onClick={()=> history.push(`/canvas/${holst._id}`)}>
             <div className="holst__title">{holst.title}</div>
